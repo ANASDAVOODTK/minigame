@@ -1,0 +1,11 @@
+# Copy to worker/.dev.vars for local development (never commit .dev.vars).
+
+# Allow the Vite dev server (and phones on your LAN) to call the local API.
+ALLOWED_ORIGINS=*
+
+# Optional: Cloudflare Realtime TURN key. Without these the game still works
+# with STUN only (direct peer-to-peer), but players behind strict NATs or
+# corporate firewalls will not be able to connect.
+# Create a key: Cloudflare dashboard -> Realtime -> TURN Server -> Create.
+TURN_KEY_ID=
+TURN_KEY_API_TOKEN=

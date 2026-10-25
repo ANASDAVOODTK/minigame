@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#10141d" />
+    <meta name="description" content="Fast online 2-8 player jetpack shooter that runs in your browser. No install, no signup." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Jetpack Brawl" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <title>Jetpack Brawl</title>
+  </head>
+  <body>
+    <div id="backdrop" aria-hidden="true"><div class="sky"></div><div class="far"></div></div>
+    <div id="game"></div>
+    <div id="touch"></div>
+    <div id="hud"></div>
+    <main id="ui"></main>
+    <div id="rotate" aria-hidden="true"><div class="rotate-icon">⟳</div><p>Rotate your device to landscape</p></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <noscript>Jetpack Brawl needs JavaScript enabled.</noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

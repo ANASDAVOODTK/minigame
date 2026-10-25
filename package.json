@@ -1,0 +1,28 @@
+{
+  "name": "minimi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimi Militia - mobile-first online multiplayer 2D shooter (WebRTC host-authoritative, Cloudflare signaling)",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "worker",
+    "client"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:client": "npm run dev -w client",
+    "dev:worker": "npm run dev -w worker",
+    "build": "npm run build -w client",
+    "typecheck": "tsc -p shared && tsc -p worker && tsc -p client",
+    "test": "vitest run",
+    "test:netsim": "vitest run tests/netsim.test.ts",
+    "e2e": "node tests/e2e/run.mjs",
+    "deploy": "npm run build && npm run deploy -w worker"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1",
+    "typescript": "~5.9.3",
+    "vitest": "^3.2.7"
+  }
+}

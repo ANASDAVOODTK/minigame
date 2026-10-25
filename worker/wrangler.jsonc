@@ -1,0 +1,40 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "minimi",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-10-01",
+
+  // The built client (client/dist) is served as static assets by the same Worker.
+  // Only /api/* reaches the Worker code; everything else is a static file.
+  "assets": {
+    "directory": "../client/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+
+  "durable_objects": {
+    "bindings": [
+      { "name": "ROOMS", "class_name": "RoomDO" },
+      { "name": "MATCHMAKER", "class_name": "Matchmaker" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RoomDO", "Matchmaker"] }],
+
+  // Per-location, approximate rate limits (Workers Rate Limiting binding).
+  "ratelimits": [
+    { "name": "CREATE_LIMITER", "namespace_id": "4101", "simple": { "limit": 10, "period": 60 } },
+    { "name": "API_LIMITER", "namespace_id": "4102", "simple": { "limit": 120, "period": 60 } }
+  ],
+
+  "vars": {
+    // Comma-separated extra origins allowed to call the API. Same-origin is always allowed.
+    // Use "*" only for local development.
+    "ALLOWED_ORIGINS": "",
+    // Cloudflare Realtime TURN key id (not secret). The API token is a secret:
+    //   wrangler secret put TURN_KEY_API_TOKEN
+    "TURN_KEY_ID": ""
+  },
+
+  "observability": { "enabled": true }
+}
