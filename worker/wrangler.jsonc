@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/wrangler/config-schema.json",
-  "name": "minimi",
+  "name": "minigame",
   "main": "src/index.ts",
   "compatibility_date": "2025-10-01",
 
